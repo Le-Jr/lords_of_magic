@@ -9,7 +9,7 @@ const DIFFICULTIES = {
     2: { id: 2, label: 'PLENO', mult: 1.5, desc: 'Desafios reais do mercado.' },
     3: { id: 3, label: 'SENIOR', mult: 2.0, desc: 'Arquitetura e internals.' },
     4: { id: 4, label: 'LINUS TORVALDS', mult: 3.0, desc: 'Kernel, Assembly e loucuras. Erro: -5pts.' },
-    5: { id: 5, label: 'MAGO SUPREMO', mult: 4.0, desc: 'Compiladores e magia negra. Erro: -10pts.' }
+    5: { id: 5, label: 'MAGO SUPREMO', mult: 4.0, desc: 'Clique e Descubra 👀. Erro: -10pts.' }
 };
 
 const TITLES = [
