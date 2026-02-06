@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LORDS OF LOGIC</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+    <link rel="shortcut icon" href="./img/favicon.ico">
+    <link rel="manifest" href="./site.webmanifest">
+    <!-- Retro Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="scanlines"></div>
+    <div id="app">
+        
+        <!-- Login Screen -->
+        <section id="screen-login" class="screen active">
+            <div class="arcade-container">
+                <img src="./img/logo.png" alt="Logo">
+                <!-- <h1 class="blink-title">LORDS<br>OF LOGIC</h1> -->
+                <p class="press-start-txt">INSERT COIN OR NICKNAME</p>
+                
+                <div class="login-form">
+                    <input type="text" id="login-input" maxlength="12" placeholder="NICKNAME" autocomplete="off">
+                    <button id="btn-login" class="btn arcade-btn">START GAME</button>
+                    <p id="login-error" class="error-msg hidden">NICKNAME EM USO!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Home Screen -->
+        <section id="screen-home" class="screen hidden">
+            <div class="arcade-header">
+                <div class="user-profile">
+                    <span id="home-name">PLAYER 1</span>
+                    <span id="home-title" class="badge">VIBECODER</span>
+                </div>
+                <div class="xp-display">XP: <span id="home-xp">0000</span></div>
+            </div>
+
+            <div class="home-menu">
+                <button id="btn-goto-diff" class="btn arcade-btn large">JOGAR</button>
+                <button id="btn-ranking" class="btn arcade-btn">RANKING</button>
+                <button id="btn-logout" class="btn arcade-btn danger">SAIR</button>
+            </div>
+        </section>
+
+        <!-- Difficulty Screen -->
+        <section id="screen-difficulty" class="screen hidden">
+            <header class="arcade-header">
+                <button class="btn-back pixel-arrow" data-target="home">➜ VOLTAR</button>
+                <h2>SELECT LEVEL</h2>
+            </header>
+            <div class="difficulty-grid">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+        <!-- Category Screen (Optional/Implicit flow, but good for structure) -->
+        <section id="screen-category" class="screen hidden">
+             <header class="arcade-header">
+                <button class="btn-back pixel-arrow" data-target="difficulty">➜ VOLTAR</button>
+                <h2>SELECT STACK</h2>
+            </header>
+            <div class="category-grid">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+        <!-- Game Screen -->
+        <section id="screen-game" class="screen hidden">
+            <div class="game-hud-arcade">
+                <div class="hud-top">
+                    <span id="game-diff-label">HARD</span>
+                    <span id="game-score">SCORE: 000</span>
+                </div>
+                <div class="life-bar">
+                    <!-- Decorativo -->
+                    <span>HP:</span>
+                    <div class="hp-blocks">
+                        <div class="block"></div><div class="block"></div><div class="block"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="q-meta">
+                    <span id="q-category">SYS ADMIN</span>
+                    <span id="game-q-count">1/10</span>
+                </div>
+                <h3 id="q-text">LOADING...</h3>
+            </div>
+
+            <div id="options-container" class="options-list">
+                <!-- Options injected here -->
+            </div>
+
+            <div id="feedback-overlay" class="feedback-overlay hidden">
+                <div class="feedback-content">
+                    <h2 id="feedback-title">CRITICAL HIT!</h2>
+                    <p id="feedback-text">Explicação aqui.</p>
+                    <button id="btn-next-q" class="btn arcade-btn">NEXT LEVEL ➜</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Screen -->
+        <section id="screen-result" class="screen hidden">
+            <div class="result-box">
+                <h2>GAME OVER</h2>
+                <div class="score-final">
+                    SCORE: <span id="result-score">0000</span>
+                </div>
+                <div class="xp-final">
+                    XP EARNED: <span id="result-xp">+0</span>
+                </div>
+                <div class="actions-row">
+                    <button id="btn-home" class="btn arcade-btn">MAIN MENU</button>
+                    <button id="btn-replay" class="btn arcade-btn">RETRY</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ranking Screen -->
+        <section id="screen-ranking" class="screen hidden">
+            <header class="arcade-header">
+                <button class="btn-back pixel-arrow" data-target="home">➜ VOLTAR</button>
+                <h2>HIGH SCORES</h2>
+            </header>
+            <div class="ranking-table-container">
+                <table id="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>RK</th>
+                            <th>NICK</th>
+                            <th>TITLE</th>
+                            <th>XP</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ranking-body">
+                        <!-- Rows injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
