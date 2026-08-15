@@ -1,0 +1,22 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "schema": "https://opencode.ai/config.json",
+  "instructions": [],
+  "permission": {
+    "edit": "allow",
+    "bash": {
+      "npm *": "allow",
+      "npx create-next-app*": "allow",
+      "npx next *": "allow",
+      "git status": "allow",
+      "git diff*": "allow",
+      "git add *": "allow",
+      "git commit *": "allow",
+      "git log*": "allow",
+      "git push*": "ask",
+      "rm *": "ask",
+      "*": "ask"
+    },
+    "webfetch": "ask"
+  }
+}
