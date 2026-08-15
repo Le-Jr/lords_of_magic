@@ -1,0 +1,134 @@
+[
+  {
+    "id": "plat-vibe-sf-cloud",
+    "category": "platforms",
+    "type": "multiple_choice",
+    "difficulty": "vibecoder",
+    "question": "What kind of software is Salesforce primarily known for?",
+    "options": ["Video Editing", "CRM", "Operating System", "Game Engine"],
+    "answer": "CRM",
+    "explanation": "Salesforce is primarily a Customer Relationship Management (CRM) platform.",
+    "needs_review": false
+  },
+  {
+    "id": "plat-vibe-shopify-liquid",
+    "category": "platforms",
+    "type": "text",
+    "difficulty": "vibecoder",
+    "question": "What is the name of the template language created by Shopify?",
+    "options": null,
+    "answer": "Liquid",
+    "explanation": "Liquid is an open-source template language written in Ruby and used extensively in Shopify themes.",
+    "needs_review": false
+  },
+  {
+    "id": "plat-jun-sf-soql",
+    "category": "platforms",
+    "type": "multiple_choice",
+    "difficulty": "junior",
+    "question": "In Salesforce, what does SOQL stand for?",
+    "options": ["Salesforce Object Query Language", "Structured Operational Query Language", "Salesforce Organized Query Logic", "System Object Query Logic"],
+    "answer": "Salesforce Object Query Language",
+    "explanation": "SOQL is used to search your organization's Salesforce data for specific information.",
+    "needs_review": false
+  },
+  {
+    "id": "plat-jun-shopify-app",
+    "category": "platforms",
+    "type": "text",
+    "difficulty": "junior",
+    "question": "What command line tool is used to build, test, and manage Shopify apps and themes?",
+    "options": null,
+    "answer": "Shopify CLI",
+    "explanation": "The Shopify CLI accelerates the development process for Shopify apps and themes.",
+    "needs_review": false
+  },
+  {
+    "id": "plat-mid-sf-gov-limits",
+    "category": "platforms",
+    "type": "multiple_choice",
+    "difficulty": "mid-level",
+    "question": "What happens if a Salesforce Apex script exceeds a synchronous governor limit?",
+    "options": ["It pauses and resumes later", "It throws an uncatchable exception", "It charges the client account", "It scales up server resources"],
+    "answer": "It throws an uncatchable exception",
+    "explanation": "Exceeding a governor limit generally results in a fatal, uncatchable runtime exception rolling back the transaction. (Verify against current docs — may change).",
+    "needs_review": true
+  },
+  {
+    "id": "plat-mid-vtex-io",
+    "category": "platforms",
+    "type": "text",
+    "difficulty": "mid-level",
+    "question": "What is the name of VTEX's serverless development platform for building commerce apps?",
+    "options": null,
+    "answer": "VTEX IO",
+    "explanation": "VTEX IO is the low-code, cloud-native development platform used to build extensions and stores on VTEX.",
+    "needs_review": false
+  },
+  {
+    "id": "plat-sen-sf-future",
+    "category": "platforms",
+    "type": "multiple_choice",
+    "difficulty": "senior",
+    "question": "In Salesforce Apex, what annotation is used to run a method asynchronously?",
+    "options": ["@Async", "@Future", "@Queueable", "@Background"],
+    "answer": "@Future",
+    "explanation": "@future marks methods that execute asynchronously when Salesforce has available resources.",
+    "needs_review": false
+  },
+  {
+    "id": "plat-sen-shopify-graphql",
+    "category": "platforms",
+    "type": "text",
+    "difficulty": "senior",
+    "question": "Which Shopify API allows you to retrieve only the exact data you need, avoiding over-fetching?",
+    "options": null,
+    "answer": "GraphQL",
+    "explanation": "Shopify strongly encourages using their GraphQL Admin API for efficient data retrieval over REST.",
+    "needs_review": false
+  },
+  {
+    "id": "plat-linus-sf-sharing",
+    "category": "platforms",
+    "type": "multiple_choice",
+    "difficulty": "linus-torvalds",
+    "question": "By default, how does an Apex class declared without a sharing keyword execute?",
+    "options": ["With Sharing", "Without Sharing", "Inherited Sharing", "Strict Sharing"],
+    "answer": "Without Sharing",
+    "explanation": "Apex classes run in system context ('without sharing') by default unless specified otherwise.",
+    "needs_review": false
+  },
+  {
+    "id": "plat-linus-vtex-masterdata",
+    "category": "platforms",
+    "type": "text",
+    "difficulty": "linus-torvalds",
+    "question": "What is the name of the VTEX module acting as a NoSQL database for custom business data?",
+    "options": null,
+    "answer": "Master Data",
+    "explanation": "VTEX Master Data allows merchants to store, query, and manage custom entities securely.",
+    "needs_review": false
+  },
+  {
+    "id": "plat-wizard-sf-lock",
+    "category": "platforms",
+    "type": "multiple_choice",
+    "difficulty": "code-wizard-supreme",
+    "question": "Which SOQL keyword allows you to lock records during a transaction to prevent race conditions?",
+    "options": ["FOR UPDATE", "LOCK RECORDS", "WITH EXCLUSIVE", "PREVENT DML"],
+    "answer": "FOR UPDATE",
+    "explanation": "Appending 'FOR UPDATE' to a SOQL query locks the retrieved records until the transaction completes.",
+    "needs_review": false
+  },
+  {
+    "id": "plat-wizard-shopify-multipass",
+    "category": "platforms",
+    "type": "text",
+    "difficulty": "code-wizard-supreme",
+    "question": "Which Shopify Plus feature enables seamless single sign-on (SSO) between an external website and Shopify?",
+    "options": null,
+    "answer": "Multipass",
+    "explanation": "Multipass allows external websites to redirect users to Shopify seamlessly without requiring a separate login.",
+    "needs_review": false
+  }
+]

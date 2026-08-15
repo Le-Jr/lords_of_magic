@@ -1,0 +1,134 @@
+[
+  {
+    "id": "wms-vibe-html-tags",
+    "category": "web-mobile-stack",
+    "type": "multiple_choice",
+    "difficulty": "vibecoder",
+    "question": "Which HTML tag is used to create a hyperlink?",
+    "options": ["<link>", "<a>", "<href>", "<hyper>"],
+    "answer": "<a>",
+    "explanation": "The <a> (anchor) tag is the standard way to create hyperlinks in HTML.",
+    "needs_review": false
+  },
+  {
+    "id": "wms-vibe-css-color",
+    "category": "web-mobile-stack",
+    "type": "text",
+    "difficulty": "vibecoder",
+    "question": "What CSS property changes the text color of an element?",
+    "options": null,
+    "answer": "color",
+    "explanation": "The 'color' property in CSS directly affects the text color.",
+    "needs_review": false
+  },
+  {
+    "id": "wms-jun-js-let",
+    "category": "web-mobile-stack",
+    "type": "multiple_choice",
+    "difficulty": "junior",
+    "question": "Which keyword is used to declare a block-scoped variable in JavaScript?",
+    "options": ["var", "let", "def", "global"],
+    "answer": "let",
+    "explanation": "'let' allows you to declare variables that are limited to the scope of a block statement.",
+    "needs_review": false
+  },
+  {
+    "id": "wms-jun-react-state",
+    "category": "web-mobile-stack",
+    "type": "text",
+    "difficulty": "junior",
+    "question": "Which React hook is used to add state to a functional component?",
+    "options": null,
+    "answer": "useState",
+    "explanation": "useState is the fundamental hook in React for managing local component state.",
+    "needs_review": false
+  },
+  {
+    "id": "wms-mid-nextjs-ssr",
+    "category": "web-mobile-stack",
+    "type": "multiple_choice",
+    "difficulty": "mid-level",
+    "question": "In Next.js (Pages Router), which function runs on the server on every request to fetch data?",
+    "options": ["getStaticProps", "getServerSideProps", "getInitialProps", "useEffect"],
+    "answer": "getServerSideProps",
+    "explanation": "getServerSideProps is used for Server-Side Rendering (SSR) and runs on every incoming request.",
+    "needs_review": false
+  },
+  {
+    "id": "wms-mid-node-event-loop",
+    "category": "web-mobile-stack",
+    "type": "multiple_choice",
+    "difficulty": "mid-level",
+    "question": "Which phase of the Node.js event loop executes setTimeout callbacks?",
+    "options": ["Poll", "Check", "Timers", "Pending callbacks"],
+    "answer": "Timers",
+    "explanation": "The timers phase executes callbacks scheduled by setTimeout() and setInterval().",
+    "needs_review": false
+  },
+  {
+    "id": "wms-sen-react-concurrency",
+    "category": "web-mobile-stack",
+    "type": "multiple_choice",
+    "difficulty": "senior",
+    "question": "Which React 18 feature allows rendering to be interrupted to handle higher-priority updates?",
+    "options": ["Suspense", "Concurrent Rendering", "Strict Mode", "Server Components"],
+    "answer": "Concurrent Rendering",
+    "explanation": "Concurrent rendering in React 18 makes rendering interruptible, improving UI responsiveness.",
+    "needs_review": false
+  },
+  {
+    "id": "wms-sen-css-paint",
+    "category": "web-mobile-stack",
+    "type": "text",
+    "difficulty": "senior",
+    "question": "What is the term for when a browser must recalculate the positions and geometries of elements?",
+    "options": null,
+    "answer": "reflow",
+    "explanation": "Reflow (or layout) occurs when changes affect the document's geometry, which is computationally expensive.",
+    "needs_review": false
+  },
+  {
+    "id": "wms-linus-v8-compiler",
+    "category": "web-mobile-stack",
+    "type": "multiple_choice",
+    "difficulty": "linus-torvalds",
+    "question": "What is the name of the optimizing JIT compiler currently used in the V8 JavaScript engine?",
+    "options": ["Crankshaft", "Turbofan", "Ignition", "SpiderMonkey"],
+    "answer": "Turbofan",
+    "explanation": "Turbofan is V8's optimizing compiler, replacing the older Crankshaft architecture.",
+    "needs_review": false
+  },
+  {
+    "id": "wms-linus-http3",
+    "category": "web-mobile-stack",
+    "type": "text",
+    "difficulty": "linus-torvalds",
+    "question": "HTTP/3 abandons TCP in favor of which transport layer protocol?",
+    "options": null,
+    "answer": "UDP",
+    "explanation": "HTTP/3 is built on QUIC, which operates over UDP to reduce connection overhead.",
+    "needs_review": false
+  },
+  {
+    "id": "wms-wizard-js-engine",
+    "category": "web-mobile-stack",
+    "type": "multiple_choice",
+    "difficulty": "code-wizard-supreme",
+    "question": "In the ECMAScript specification, what internal slot is used to hold the prototype of an object?",
+    "options": ["[[Prototype]]", "__proto__", "prototype", "[[Class]]"],
+    "answer": "[[Prototype]]",
+    "explanation": "[[Prototype]] is the internal slot designated by the ECMAScript spec for an object's prototype.",
+    "needs_review": false
+  },
+  {
+    "id": "wms-wizard-react-reconciler",
+    "category": "web-mobile-stack",
+    "type": "text",
+    "difficulty": "code-wizard-supreme",
+    "question": "What is the name of React's internal core algorithm that replaced the stack reconciler in React 16?",
+    "options": null,
+    "answer": "Fiber",
+    "explanation": "React Fiber is the reimplementation of React's core algorithm enabling incremental rendering.",
+    "needs_review": false
+  }
+]

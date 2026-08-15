@@ -1,0 +1,134 @@
+[
+  {
+    "id": "gendev-vibe-git-push",
+    "category": "general-development",
+    "type": "multiple_choice",
+    "difficulty": "vibecoder",
+    "question": "Which Git command is used to upload local commits to a remote repository?",
+    "options": ["git pull", "git upload", "git push", "git commit"],
+    "answer": "git push",
+    "explanation": "git push sends your committed local changes to a remote repository.",
+    "needs_review": false
+  },
+  {
+    "id": "gendev-vibe-dry",
+    "category": "general-development",
+    "type": "text",
+    "difficulty": "vibecoder",
+    "question": "In clean code principles, what does the acronym DRY stand for?",
+    "options": null,
+    "answer": "Don't Repeat Yourself",
+    "explanation": "DRY encourages reducing repetition in software patterns and code.",
+    "needs_review": false
+  },
+  {
+    "id": "gendev-jun-rest-verbs",
+    "category": "general-development",
+    "type": "multiple_choice",
+    "difficulty": "junior",
+    "question": "Which HTTP method is typically used to completely replace an existing resource?",
+    "options": ["POST", "PATCH", "PUT", "UPDATE"],
+    "answer": "PUT",
+    "explanation": "PUT is traditionally used in REST to replace an entire resource, whereas PATCH is for partial updates.",
+    "needs_review": false
+  },
+  {
+    "id": "gendev-jun-git-branch",
+    "category": "general-development",
+    "type": "text",
+    "difficulty": "junior",
+    "question": "What Git command creates a new branch and switches to it in one step?",
+    "options": null,
+    "answer": "git checkout -b",
+    "explanation": "git checkout -b (or git switch -c) creates a new branch and immediately checks it out.",
+    "needs_review": false
+  },
+  {
+    "id": "gendev-mid-solid-o",
+    "category": "general-development",
+    "type": "multiple_choice",
+    "difficulty": "mid-level",
+    "question": "In the SOLID principles, what does the 'O' stand for?",
+    "options": ["Object-Oriented", "Open-Closed Principle", "Observable State", "O(n) Complexity"],
+    "answer": "Open-Closed Principle",
+    "explanation": "The Open-Closed Principle states that software entities should be open for extension but closed for modification.",
+    "needs_review": false
+  },
+  {
+    "id": "gendev-mid-docker-file",
+    "category": "general-development",
+    "type": "text",
+    "difficulty": "mid-level",
+    "question": "What is the standard name of the file used to define instructions for building a Docker image?",
+    "options": null,
+    "answer": "Dockerfile",
+    "explanation": "A Dockerfile is a text document that contains all the commands to assemble an image.",
+    "needs_review": false
+  },
+  {
+    "id": "gendev-sen-cap-theorem",
+    "category": "general-development",
+    "type": "multiple_choice",
+    "difficulty": "senior",
+    "question": "In the CAP theorem for distributed databases, you can only guarantee two out of Consistency, Availability, and what else?",
+    "options": ["Performance", "Partition Tolerance", "Persistence", "Parallelism"],
+    "answer": "Partition Tolerance",
+    "explanation": "The CAP theorem states distributed systems can only guarantee two of Consistency, Availability, and Partition Tolerance.",
+    "needs_review": false
+  },
+  {
+    "id": "gendev-sen-git-rebase",
+    "category": "general-development",
+    "type": "text",
+    "difficulty": "senior",
+    "question": "What Git feature is used to rewrite commit history by moving a sequence of commits to a new base commit?",
+    "options": null,
+    "answer": "rebase",
+    "explanation": "git rebase re-applies commits from one branch on top of another base, creating a linear history.",
+    "needs_review": false
+  },
+  {
+    "id": "gendev-linus-big-o",
+    "category": "general-development",
+    "type": "multiple_choice",
+    "difficulty": "linus-torvalds",
+    "question": "What is the average time complexity for accessing an element by key in a well-implemented Hash Table?",
+    "options": ["O(n)", "O(log n)", "O(1)", "O(n log n)"],
+    "answer": "O(1)",
+    "explanation": "Hash tables provide O(1) average time complexity for lookups, assuming a good hash function and load factor.",
+    "needs_review": false
+  },
+  {
+    "id": "gendev-linus-b-tree",
+    "category": "general-development",
+    "type": "text",
+    "difficulty": "linus-torvalds",
+    "question": "What self-balancing tree data structure is most commonly used in database indexing?",
+    "options": null,
+    "answer": "B-Tree",
+    "explanation": "B-Trees (and B+ Trees) minimize disk I/O operations, making them ideal for relational database indices.",
+    "needs_review": false
+  },
+  {
+    "id": "gendev-wizard-crypto",
+    "category": "general-development",
+    "type": "multiple_choice",
+    "difficulty": "code-wizard-supreme",
+    "question": "Which of the following is a cryptographic hash function rather than an encryption algorithm?",
+    "options": ["AES", "RSA", "SHA-256", "ChaCha20"],
+    "answer": "SHA-256",
+    "explanation": "SHA-256 is a one-way hashing algorithm, whereas AES, RSA, and ChaCha20 are two-way encryption algorithms.",
+    "needs_review": false
+  },
+  {
+    "id": "gendev-wizard-k8s",
+    "category": "general-development",
+    "type": "text",
+    "difficulty": "code-wizard-supreme",
+    "question": "In Kubernetes, what is the smallest and simplest deployable computing unit that you can create and manage?",
+    "options": null,
+    "answer": "Pod",
+    "explanation": "A Pod represents a single instance of a running process in a cluster and can contain one or more containers.",
+    "needs_review": false
+  }
+]
