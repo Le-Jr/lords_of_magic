@@ -65,6 +65,11 @@ the product genuinely monochrome.
   selected command is always visibly inverted.
 - **Content box**: container with a square 2px border, no shadow, no
   gradient.
+- **Ranking list**: tabular data rendered as a content-box `<table>`.
+  Uppercase secondary-text column headers, dashed rule under the
+  header row, body rows in `text-sm`; numeric columns (rank, XP,
+  matches) right-aligned with `tabular-nums` so figures line up like
+  terminal output.
 - **Keyboard focus cursor**: same visual treatment as hover — a solid
   block inverting colors. This replaces the browser's default outline
   and should never be removed without that substitute.

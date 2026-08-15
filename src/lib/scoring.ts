@@ -25,8 +25,10 @@ const WRONG_PENALTIES: Record<Difficulty, number> = {
 export type AnswerResult = "correct" | "wrong" | "no-answer";
 
 export type ScoredAnswer = {
+  questionId: string;
   difficulty: Difficulty;
   result: AnswerResult;
+  selected: string | null;
 };
 
 /** Points for a single question, per the PROJECT.md difficulty/scoring table. */

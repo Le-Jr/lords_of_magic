@@ -6,9 +6,15 @@ type ResultViewProps = {
   score: number;
   xp: number;
   playAgainHref: string;
+  recorded?: boolean | null;
 };
 
-export function ResultView({ score, xp, playAgainHref }: ResultViewProps) {
+export function ResultView({
+  score,
+  xp,
+  playAgainHref,
+  recorded,
+}: ResultViewProps) {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-4">
@@ -28,6 +34,10 @@ export function ResultView({ score, xp, playAgainHref }: ResultViewProps) {
           <span className="font-bold tabular-nums">{xp}</span>
         </p>
       </div>
+
+      {recorded === false ? (
+        <p className="text-xs text-term-secondary">{strings.round.notRecorded}</p>
+      ) : null}
 
       <div className="flex flex-col gap-1">
         <Link
