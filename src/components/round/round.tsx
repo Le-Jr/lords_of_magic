@@ -7,6 +7,7 @@ import { PromptLine } from "@/components/prompt-line";
 import type { Question } from "@/lib/questions/schema";
 import { roundScore, xpFromScore } from "@/lib/scoring";
 import type { AnswerResult, ScoredAnswer } from "@/lib/scoring";
+import { recordSoloSession } from "@/lib/sessions";
 import { strings } from "@/lib/strings";
 import { FeedbackView } from "./feedback-view";
 import { QuestionView } from "./question-view";
@@ -36,13 +37,18 @@ export function Round({
   const [playAgainHref, setPlayAgainHref] = useState(
     `/play/${categorySlug}?r=0`,
   );
+  const [roundId] = useState(() => crypto.randomUUID());
+  const [persisted, setPersisted] = useState<boolean | null>(null);
+  const [confirmedScore, setConfirmedScore] = useState<number | null>(null);
   const timeLeftRef = useRef(ROUND_SECONDS);
   const resolvedRef = useRef(false);
+  const submittedRef = useRef(false);
 
   const question = questions[currentIndex];
   const total = questions.length;
   const isLast = currentIndex === total - 1;
   const score = roundScore(answers);
+  const displayScore = confirmedScore ?? score;
 
   const resolve = useCallback(
     (answerResult: AnswerResult, chosen: string | null) => {
@@ -55,7 +61,12 @@ export function Round({
       setPhase("feedback");
       setAnswers((prev) => [
         ...prev,
-        { difficulty: question.difficulty, result: answerResult },
+        {
+          questionId: question.id,
+          difficulty: question.difficulty,
+          result: answerResult,
+          selected: chosen,
+        },
       ]);
     },
     [phase, question],
@@ -90,6 +101,25 @@ export function Round({
     setSelected(null);
     setPhase("question");
   };
+
+  useEffect(() => {
+    if (phase !== "result" || submittedRef.current) {
+      return;
+    }
+    submittedRef.current = true;
+    void recordSoloSession({
+      sessionId: roundId,
+      category: categoryDisplay,
+      answers,
+    }).then((result) => {
+      if (result.recorded) {
+        setConfirmedScore(result.score);
+        setPersisted(true);
+      } else {
+        setPersisted(false);
+      }
+    });
+  }, [phase, roundId, categoryDisplay, answers]);
 
   const progress =
     phase === "result"
@@ -129,9 +159,10 @@ export function Round({
 
           {phase === "result" ? (
             <ResultView
-              score={score}
-              xp={xpFromScore(score)}
+              score={displayScore}
+              xp={xpFromScore(displayScore)}
               playAgainHref={playAgainHref}
+              recorded={persisted}
             />
           ) : null}
         </section>
