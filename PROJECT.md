@@ -97,6 +97,12 @@ local Top 10 leaderboard. Currently local-only (no backend); this
 moves to a persisted, Supabase-backed ranking once the backend phase
 starts — see `AGENTS.md` for planned routes and phasing.
 
+## Explicitly out of scope for now
+
+Real traditional login (email/password), a chat feature, native mobile
+apps, and — until its own dedicated phase — any backend, database, or
+real-time multiplayer. These aren't rejected ideas, just sequenced for
+later; don't build toward them ahead of an explicit task to do so.
 
 ## Language
 
