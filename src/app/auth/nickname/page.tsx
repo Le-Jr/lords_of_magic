@@ -6,6 +6,7 @@ import { PromptLine } from "@/components/prompt-line";
 import { isPlaceholderNickname } from "@/lib/nickname";
 import { strings } from "@/lib/strings";
 import { createClient } from "@/lib/supabase/server";
+import { getUserStatus } from "@/lib/user-status";
 
 export default async function NicknamePage() {
   const supabase = await createClient();
@@ -25,10 +26,12 @@ export default async function NicknamePage() {
     redirect("/");
   }
 
+  const status = await getUserStatus(supabase);
+
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-12">
       <div className="flex w-full max-w-[40rem] flex-col">
-        <PromptLine prompt={strings.nickname.prompt} />
+        <PromptLine prompt={strings.nickname.prompt} userStatus={status} />
 
         <section className="mt-16 flex flex-col gap-8">
           <div className="flex flex-col gap-4">

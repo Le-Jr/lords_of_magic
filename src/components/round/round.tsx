@@ -19,12 +19,14 @@ type RoundProps = {
   questions: Question[];
   categorySlug: string;
   categoryDisplay: string;
+  userStatus?: string;
 };
 
 export function Round({
   questions,
   categorySlug,
   categoryDisplay,
+  userStatus,
 }: RoundProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [phase, setPhase] = useState<"question" | "feedback" | "result">(
@@ -129,7 +131,7 @@ export function Round({
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-12">
       <div className="flex w-full max-w-[40rem] flex-col">
-        <PromptLine prompt={strings.round.prompt(categoryDisplay)} />
+        <PromptLine prompt={strings.round.prompt(categoryDisplay)} userStatus={userStatus} />
 
         <section className="mt-12 flex flex-col gap-8">
           {phase === "question" ? (

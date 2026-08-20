@@ -2,7 +2,9 @@ import Link from "next/link";
 
 import { LoginForm } from "@/components/login-form";
 import { PromptLine } from "@/components/prompt-line";
+import { createClient } from "@/lib/supabase/server";
 import { strings } from "@/lib/strings";
+import { getUserStatus } from "@/lib/user-status";
 
 export default async function LoginPage({
   searchParams,
@@ -11,10 +13,13 @@ export default async function LoginPage({
 }) {
   const { error } = await searchParams;
 
+  const supabase = await createClient();
+  const status = await getUserStatus(supabase);
+
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-12">
       <div className="flex w-full max-w-[40rem] flex-col">
-        <PromptLine prompt={strings.login.prompt} />
+        <PromptLine prompt={strings.login.prompt} userStatus={status} />
 
         <section className="mt-16 flex flex-col gap-8">
           <div className="flex flex-col gap-4">

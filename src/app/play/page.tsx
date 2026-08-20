@@ -7,18 +7,23 @@ import {
   CATEGORY_SLUG_TO_DISPLAY,
   QUESTION_CATEGORY_SLUGS,
 } from "@/lib/questions/schema";
+import { createClient } from "@/lib/supabase/server";
 import { strings } from "@/lib/strings";
+import { getUserStatus } from "@/lib/user-status";
 
 const categoryLinks: MenuLink[] = QUESTION_CATEGORY_SLUGS.map((slug) => ({
   href: `/play/${slug}`,
   label: CATEGORY_SLUG_TO_DISPLAY[slug],
 }));
 
-export default function PlayPage() {
+export default async function PlayPage() {
+  const supabase = await createClient();
+  const status = await getUserStatus(supabase);
+
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-12">
       <div className="flex w-full max-w-[40rem] flex-col">
-        <PromptLine prompt={strings.play.prompt} />
+        <PromptLine prompt={strings.play.prompt} userStatus={status} />
 
         <section className="mt-16 flex flex-col gap-8">
           <div className="flex flex-col gap-4">

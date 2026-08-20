@@ -3,8 +3,10 @@ import Link from "next/link";
 import { PromptLine } from "@/components/prompt-line";
 import { getRankingPage, RANKING_PAGE_SIZE } from "@/lib/ranking";
 import type { RankingRow } from "@/lib/ranking";
+import { createClient } from "@/lib/supabase/server";
 import { strings } from "@/lib/strings";
 import { titleFromXp } from "@/lib/titles";
+import { getUserStatus } from "@/lib/user-status";
 
 type RankingPageProps = {
   searchParams: Promise<{ page?: string | string[] }>;
@@ -15,12 +17,16 @@ export default async function RankingPage({ searchParams }: RankingPageProps) {
   const rawPage = Array.isArray(params.page) ? params.page[0] : params.page;
   const requestedPage = Math.max(1, Number.parseInt(rawPage ?? "1", 10) || 1);
 
-  const { rows, total, totalPages, page } = await getRankingPage(requestedPage);
+  const supabase = await createClient();
+  const [{ rows, total, totalPages, page }, status] = await Promise.all([
+    getRankingPage(requestedPage),
+    getUserStatus(supabase),
+  ]);
 
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-12">
       <div className="flex w-full max-w-[40rem] flex-col">
-        <PromptLine prompt={strings.ranking.prompt} />
+        <PromptLine prompt={strings.ranking.prompt} userStatus={status} />
 
         <section className="mt-16 flex flex-col gap-4">
           <div className="flex flex-col gap-4">

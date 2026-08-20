@@ -4,10 +4,12 @@ import { Pong } from "@/components/pong";
 import { PromptLine } from "@/components/prompt-line";
 import { createClient } from "@/lib/supabase/server";
 import { strings } from "@/lib/strings";
+import { getUserStatus } from "@/lib/user-status";
 
 export default async function Home() {
   const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
+  const status = await getUserStatus(supabase);
 
   const authLink: MenuItem = data.user
     ? { action: "/auth/logout", label: strings.landing.logout }
@@ -21,7 +23,7 @@ export default async function Home() {
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-12">
       <div className="flex w-full max-w-[40rem] flex-col">
-        <PromptLine />
+        <PromptLine userStatus={status} />
 
         <section className="mt-16 flex flex-col gap-8">
           <div className="flex flex-col gap-4">
