@@ -11,6 +11,7 @@ export const strings = {
     play: "PLAY",
     ranking: "RANKING",
     login: "LOGIN",
+    logout: "LOGOUT",
     hint: "// press TAB to enter the menu — ARROW KEYS to select, ENTER to run",
     version: "LORDS OF LOGIC v0.1.0",
   },

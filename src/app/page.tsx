@@ -1,16 +1,23 @@
 import { Menu } from "@/components/menu";
-import type { MenuLink } from "@/components/menu";
+import type { MenuItem } from "@/components/menu";
 import { Pong } from "@/components/pong";
 import { PromptLine } from "@/components/prompt-line";
+import { createClient } from "@/lib/supabase/server";
 import { strings } from "@/lib/strings";
 
-const menuLinks: MenuLink[] = [
-  { href: "/play", label: strings.landing.play },
-  { href: "/ranking", label: strings.landing.ranking },
-  { href: "/login", label: strings.landing.login },
-];
+export default async function Home() {
+  const supabase = await createClient();
+  const { data } = await supabase.auth.getUser();
 
-export default function Home() {
+  const authLink: MenuItem = data.user
+    ? { action: "/auth/logout", label: strings.landing.logout }
+    : { href: "/login", label: strings.landing.login };
+
+  const menuLinks: MenuItem[] = [
+    { href: "/play", label: strings.landing.play },
+    { href: "/ranking", label: strings.landing.ranking },
+    authLink,
+  ];
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-12">
       <div className="flex w-full max-w-[40rem] flex-col">

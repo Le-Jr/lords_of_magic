@@ -9,18 +9,29 @@ export type MenuLink = {
   label: string;
 };
 
+export type MenuAction = {
+  action: string;
+  label: string;
+};
+
+export type MenuItem = MenuLink | MenuAction;
+
 type MenuProps = {
   label: string;
-  links: MenuLink[];
+  links: MenuItem[];
 };
+
+function isLink(item: MenuItem): item is MenuLink {
+  return "href" in item;
+}
 
 export function Menu({ label, links }: MenuProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const itemRefs = useRef<(HTMLElement | null)[]>([]);
 
-  const focusLink = useCallback((index: number) => {
+  const focusItem = useCallback((index: number) => {
     setActiveIndex(index);
-    linkRefs.current[index]?.focus();
+    itemRefs.current[index]?.focus();
   }, []);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLUListElement>) => {
@@ -28,19 +39,19 @@ export function Menu({ label, links }: MenuProps) {
     switch (event.key) {
       case "ArrowDown":
         event.preventDefault();
-        focusLink(activeIndex === lastIndex ? 0 : activeIndex + 1);
+        focusItem(activeIndex === lastIndex ? 0 : activeIndex + 1);
         break;
       case "ArrowUp":
         event.preventDefault();
-        focusLink(activeIndex === 0 ? lastIndex : activeIndex - 1);
+        focusItem(activeIndex === 0 ? lastIndex : activeIndex - 1);
         break;
       case "Home":
         event.preventDefault();
-        focusLink(0);
+        focusItem(0);
         break;
       case "End":
         event.preventDefault();
-        focusLink(lastIndex);
+        focusItem(lastIndex);
         break;
     }
   };
@@ -53,27 +64,54 @@ export function Menu({ label, links }: MenuProps) {
       onKeyDown={handleKeyDown}
       className="flex flex-col gap-1"
     >
-      {links.map((link, index) => (
-        <li key={link.href} role="none">
-          <Link
-            ref={(node) => {
-              linkRefs.current[index] = node;
-            }}
-            href={link.href}
-            role="menuitem"
-            tabIndex={index === activeIndex ? 0 : -1}
-            className="group flex w-fit items-center gap-2 px-2 py-1 text-sm uppercase text-term-primary whitespace-nowrap transition-none hover:bg-term-primary hover:text-term-bg focus:bg-term-primary focus:text-term-bg focus:outline-none"
+      {links.map((item, index) => {
+        const key = isLink(item) ? item.href : item.action;
+        const isActive = index === activeIndex;
+        const sharedClassName =
+          "group flex w-fit items-center gap-2 px-2 py-1 text-sm uppercase text-term-primary whitespace-nowrap transition-none hover:bg-term-primary hover:text-term-bg focus:bg-term-primary focus:text-term-bg focus:outline-none";
+        const arrow = (
+          <span
+            aria-hidden="true"
+            className="text-term-secondary transition-none group-hover:text-term-bg group-focus:text-term-bg"
           >
-            <span
-              aria-hidden="true"
-              className="text-term-secondary transition-none group-hover:text-term-bg group-focus:text-term-bg"
-            >
-              {">"}
-            </span>
-            <span>{link.label}</span>
-          </Link>
-        </li>
-      ))}
+            {">"}
+          </span>
+        );
+
+        return (
+          <li key={key} role="none">
+            {isLink(item) ? (
+              <Link
+                ref={(node) => {
+                  itemRefs.current[index] = node;
+                }}
+                href={item.href}
+                role="menuitem"
+                tabIndex={isActive ? 0 : -1}
+                className={sharedClassName}
+              >
+                {arrow}
+                <span>{item.label}</span>
+              </Link>
+            ) : (
+              <form method="GET" action={item.action}>
+                <button
+                  ref={(node) => {
+                    itemRefs.current[index] = node;
+                  }}
+                  type="submit"
+                  role="menuitem"
+                  tabIndex={isActive ? 0 : -1}
+                  className={sharedClassName}
+                >
+                  {arrow}
+                  <span>{item.label}</span>
+                </button>
+              </form>
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 }
