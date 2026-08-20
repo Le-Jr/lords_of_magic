@@ -15,9 +15,14 @@ export default async function Home() {
     ? { action: "/auth/logout", label: strings.landing.logout }
     : { href: "/login", label: strings.landing.login };
 
+  const settingsLink: MenuItem | null = data.user
+    ? { href: "/settings", label: strings.settings.title }
+    : null;
+
   const menuLinks: MenuItem[] = [
     { href: "/play", label: strings.landing.play },
     { href: "/ranking", label: strings.landing.ranking },
+    ...(settingsLink ? [settingsLink] : []),
     authLink,
   ];
   return (

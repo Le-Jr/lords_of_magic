@@ -1,9 +1,16 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import { isPlaceholderNickname } from "@/lib/nickname";
-import { createClient } from "@/lib/supabase/server";
+import { createRouteClient } from "@/lib/supabase/server";
 
-export async function GET(request: Request) {
+function withCookies(target: NextResponse, source: NextResponse) {
+  source.cookies.getAll().forEach(({ name, value }) => {
+    target.cookies.set(name, value);
+  });
+  return target;
+}
+
+export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
   const next = searchParams.get("next")?.startsWith("/")
@@ -11,8 +18,9 @@ export async function GET(request: Request) {
     : "/";
 
   if (code) {
-    const supabase = await createClient();
+    const { supabase, response: supabaseResponse } = createRouteClient(request);
     const { error } = await supabase.auth.exchangeCodeForSession(code);
+
     if (!error) {
       const { data } = await supabase.auth.getClaims();
 
@@ -23,12 +31,21 @@ export async function GET(request: Request) {
           .eq("id", data.claims.sub)
           .single();
 
-        if (profile && isPlaceholderNickname(profile.nickname, data.claims.sub)) {
-          return NextResponse.redirect(`${origin}/auth/nickname`);
+        if (
+          profile &&
+          isPlaceholderNickname(profile.nickname, data.claims.sub)
+        ) {
+          return withCookies(
+            NextResponse.redirect(`${origin}/auth/nickname`),
+            supabaseResponse,
+          );
         }
       }
 
-      return NextResponse.redirect(`${origin}${next}`);
+      return withCookies(
+        NextResponse.redirect(`${origin}${next}`),
+        supabaseResponse,
+      );
     }
   }
 

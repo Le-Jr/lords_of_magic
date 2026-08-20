@@ -40,6 +40,13 @@ export const strings = {
     errorTaken: "ERROR: NICKNAME ALREADY TAKEN",
     errorFailed: "ERROR: COULD NOT SAVE NICKNAME",
   },
+  settings: {
+    prompt: "C:\\LORDS_OF_LOGIC\\SETTINGS>",
+    title: "SETTINGS",
+    tagline: "manage your profile",
+    back: "< BACK",
+    hint: "// edit your nickname or keep the default",
+  },
   play: {
     prompt: "C:\\LORDS_OF_LOGIC\\PLAY>",
     title: "PLAY",
